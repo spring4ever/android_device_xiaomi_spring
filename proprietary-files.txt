@@ -109,7 +109,6 @@ vendor/firmware/sipa.bin
 # Audio (FX modules)
 vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libdynproc.so
-vendor/lib64/soundfx/libmisoundfx.so
 vendor/lib64/soundfx/libshoebox.so
 vendor/lib64/libdlbpreg.so
 

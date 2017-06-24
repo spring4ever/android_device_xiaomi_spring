@@ -44,9 +44,6 @@
         <library name="audio_pre_processing" path="libqcomvoiceprocessing.so"/>
         <library name="volume_listener" path="libvolumelistener.so"/>
         <library name="audiosphere" path="libasphere.so"/>
-        <!--MISOUND START-->
-        <library name="misoundfx" path="libmisoundfx.so"/>
-        <!--MISOUND END-->
         <!--ADD: Audio_Dolby_Atoms-->
         <!--DOLBY DAP-->
         <library name="dap" path="libhwdap.so"/>
