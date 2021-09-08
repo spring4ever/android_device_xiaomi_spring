@@ -190,6 +190,9 @@ persist.vendor.fingerprint.sensor_location=1080|1000|110|local:46309465951073859
 # FRP
 ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
+# Fuse
+persist.sys.fuse.passthrough.enable=true
+
 # Gatekeeper
 vendor.gatekeeper.is_security_level_spu=0
 
