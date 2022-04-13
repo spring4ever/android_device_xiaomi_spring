@@ -1422,11 +1422,6 @@ vendor/lib64/vendor.qti.hardware.qccsyshal@1.2.so
 vendor/lib64/vendor.qti.qccvndhal_aidl-V1-ndk.so
 vendor/lib64/vendor.qti.qccvndhal_aidl-halimpl.so
 
-# QCOM system daemon
-vendor/bin/qcom-system-daemon
-vendor/etc/seccomp_policy/qti-systemd.policy
-vendor/lib64/libsubsystem_control.so
-
 # QCRIL
 system_ext/etc/permissions/qcrilhook.xml
 system_ext/framework/qcrilhook.jar
