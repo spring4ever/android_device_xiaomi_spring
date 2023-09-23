@@ -1,0 +1,18 @@
+//
+// SPDX-FileCopyrightText: The LineageOS Project
+// SPDX-License-Identifier: Apache-2.0
+//
+
+cc_library_static {
+    name: "libpowermode-ext-spring",
+    defaults: [
+        "android.hardware.power-ndk_shared",
+    ],
+    vendor: true,
+    srcs: [
+        "power-mode.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+    ],
+}

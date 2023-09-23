@@ -263,6 +263,8 @@ PRODUCT_PACKAGES += \
     vendor_firmware_mnt_mountpoint
 
 # Power
+$(call soong_config_set,qtipower,mode_ext_lib,//$(LOCAL_PATH):libpowermode-ext-spring)
+
 PRODUCT_PACKAGES += \
     android.hardware.power-service-qti
 
