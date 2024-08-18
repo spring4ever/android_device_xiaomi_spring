@@ -56,7 +56,6 @@ blob_fixups: blob_fixups_user_type = {
         'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
         'odm/lib64/hw/displayfeature.default.so',
         'vendor/bin/hw/vendor.qti.camera.provider-service_64',
-        'vendor/bin/hw/vendor.qti.hardware.display.composer-service',
         'vendor/lib64/camx.provider-impl.so',
         'vendor/lib64/libdpps.so',
         'vendor/lib64/liblearningmodule.so',
