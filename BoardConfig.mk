@@ -199,7 +199,7 @@ BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 3
 
 # VINTF
 DEVICE_MANIFEST_SKUS := blair
-DEVICE_MANIFEST_BLAIR_FILES := \
+DEVICE_MANIFEST_BLAIR_FILES += \
     $(DEVICE_PATH)/configs/vintf/manifest_blair.xml \
     hardware/qcom-caf/sm6375-6.1/audio/primary-hal/configs/common/manifest_non_qmaa.xml \
     hardware/qcom-caf/sm6375-6.1/audio/primary-hal/configs/common/manifest_non_qmaa_extn.xml
