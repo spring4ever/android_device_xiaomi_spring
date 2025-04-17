@@ -38,16 +38,9 @@ vendor/lib64/hw/com.dsi.ant@1.0-impl.so
 
 # Audio
 vendor/lib64/hw/audio.primary.blair.so
-vendor/lib64/lib_bt_aptx.so
-vendor/lib64/lib_bt_ble.so
-vendor/lib64/lib_bt_bundle.so
 vendor/lib64/libadm.so
 vendor/lib64/libadsprpc.so
 vendor/lib64/libagm.so
-vendor/lib64/libagm_compress_plugin.so
-vendor/lib64/libagm_mixer_plugin.so
-vendor/lib64/libagm_pcm_plugin.so
-vendor/lib64/libagmclient.so
 vendor/lib64/libagmmixer.so
 vendor/lib64/libar-acdb.so
 vendor/lib64/libar-gpr.so
@@ -58,8 +51,6 @@ vendor/lib64/libaudio_log_utils.so
 vendor/lib64/libcapiv2svacnnvendor.so
 vendor/lib64/libcapiv2svarnnvendor.so
 vendor/lib64/libcapiv2uvvendor.so
-vendor/lib64/libfmpal.so
-vendor/lib64/libhfp_pal.so
 vendor/lib64/libkaraokepal.so
 vendor/lib64/liblx-ar_util.so
 vendor/lib64/liblx-osal.so
@@ -67,30 +58,20 @@ vendor/lib64/libmcs.so
 vendor/lib64/libmisight.so
 vendor/lib64/libpalclient.so
 vendor/lib64/libqtigefar.so
-vendor/lib64/libsndcardparser.so
 vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
 
 # Audio configs
-odm/etc/audio_policy_engine_configuration_mi.xml:odm/etc/audio_policy_engine_configuration.xml
-odm/etc/audio_policy_engine_default_stream_volumes.xml
-odm/etc/audio_policy_engine_product_strategies.xml
-odm/etc/audio_policy_engine_stream_volumes.xml
-vendor/etc/audio/sku_blair/audio_effects.conf
 vendor/etc/audio/sku_blair/mixer_paths_blair_mtp.xml
 vendor/etc/audio/sku_blair/mixer_paths_blair_mtp_usbc.xml
 vendor/etc/audio/sku_blair/mixer_paths_blair_qrd.xml
 vendor/etc/audio/sku_blair/resourcemanager_blair_mtp.xml
 vendor/etc/audio/sku_blair/resourcemanager_blair_mtp_usbc.xml
 vendor/etc/audio/sku_blair/resourcemanager_blair_qrd.xml
-vendor/etc/audio/sku_blair_qssi/audio_policy_configuration.xml
-vendor/etc/a2dp_audio_policy_configuration.xml
-vendor/etc/audio_policy_configuration.xml
 vendor/etc/backend_conf.xml
 vendor/etc/card-defs.xml
 vendor/etc/kvh2xml.xml
 vendor/etc/microphone_characteristics.xml
-vendor/etc/usb_audio_policy_configuration.xml
 vendor/etc/usecaseKvManager.xml
 
 # Audio configs (SIPA)
@@ -108,9 +89,7 @@ vendor/firmware/sipa.bin
 
 # Audio (FX modules)
 vendor/lib64/soundfx/libasphere.so
-vendor/lib64/soundfx/libdynproc.so
 vendor/lib64/soundfx/libshoebox.so
-vendor/lib64/libdlbpreg.so
 
 # Batterysecret
 vendor/bin/batterysecret
@@ -1198,7 +1177,6 @@ vendor/etc/hal_uuid_map_o19cn.xml
 vendor/lib64/libqtikeymint.so
 
 # Listen
-vendor/etc/vintf/manifest/manifest_non_qmaa_extn.xml
 vendor/lib64/hw/sound_trigger.primary.blair.so
 vendor/lib64/libeai_fixed.so
 vendor/lib64/libeai_float.so

@@ -199,7 +199,10 @@ BOARD_AVB_BOOT_ROLLBACK_INDEX_LOCATION := 3
 
 # VINTF
 DEVICE_MANIFEST_SKUS := blair
-DEVICE_MANIFEST_BLAIR_FILES := $(DEVICE_PATH)/configs/vintf/manifest_blair.xml
+DEVICE_MANIFEST_BLAIR_FILES := \
+    $(DEVICE_PATH)/configs/vintf/manifest_blair.xml \
+    hardware/qcom-caf/sm8650/audio/primary-hal/configs/common/manifest_non_qmaa.xml \
+    hardware/qcom-caf/sm8650/audio/primary-hal/configs/common/manifest_non_qmaa_extn.xml
 
 DEVICE_PRODUCT_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/configs/vintf/compatibility_matrix.xml
 
