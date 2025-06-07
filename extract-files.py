@@ -98,6 +98,8 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libprocessgroup_shim.so'),
     'vendor/etc/vintf/manifest/c2_manifest_vendor_spring.xml': blob_fixup()
         .regex_replace('.+DOLBY.+\n', ''),
+    ('vendor/lib64/libqcrilNr.so', 'vendor/lib64/libril-db.so'): blob_fixup()
+        .binary_regex_replace(rb'persist\.vendor\.radio\.poweron_opt', rb'persist.vendor.radio.poweron_ign'),
 }  # fmt: skip
 
 
