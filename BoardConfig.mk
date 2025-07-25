@@ -78,6 +78,7 @@ BOARD_KERNEL_CMDLINE := \
     msm_rtb.filter=0x237 \
     iptable_raw.raw_before_defrag=1 \
     ip6table_raw.raw_before_defrag=1 \
+    sysctl.kernel.firmware_config.force_sysfs_fallback=1 \
     swinfo.fingerprint=$(LINEAGE_VERSION) \
     mtdoops.fingerprint=$(LINEAGE_VERSION)
 
