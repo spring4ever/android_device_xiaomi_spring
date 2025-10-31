@@ -7,6 +7,7 @@ persist.vendor.overlay.izat.optin=rro
 
 # Media
 media.stagefright.thumbnail.prefer_hw_codecs=true
+ro.media.xml_variant.profiles=_blair
 
 # Radio
 persist.vendor.radio.atfwd.start=true
