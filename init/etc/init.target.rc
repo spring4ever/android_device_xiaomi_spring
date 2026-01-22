@@ -400,3 +400,7 @@ service fatal_err_check /vendor/bin/check_fatal_err.sh
     user root
     group root
     oneshot
+
+on property:sys.boot_completed=1
+    # Enable PowerHAL hint processing
+    setprop vendor.powerhal.init 1

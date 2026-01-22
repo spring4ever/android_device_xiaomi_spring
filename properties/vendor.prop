@@ -226,9 +226,6 @@ debug.stagefright.omx_default_rank=0
 # Perf
 ro.vendor.extension_library=libqti-perfd-client.so
 
-# Power
-vendor.power.pasr.enabled=true
-
 # QSPM
 ro.vendor.qspm.enable=true
 
