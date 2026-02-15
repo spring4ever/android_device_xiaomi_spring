@@ -21,4 +21,11 @@
             <instance>default</instance>
         </interface>
     </hal>
+    <hal format="aidl" optional="true">
+        <name>com.fingerprints.fpc.extension</name>
+        <interface>
+            <name>IFpcExtension</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
 </compatibility-matrix>

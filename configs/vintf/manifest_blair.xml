@@ -105,4 +105,13 @@
         <transport>hwbinder</transport>
         <fqname>@1.0::IService/default</fqname>
     </hal>
+    <hal format="aidl">
+        <name>vendor.xiaomi.hardware.fx.tunnel</name>
+        <version>1</version>
+        <fqname>IMiFxTunnel/default</fqname>
+    </hal>
+    <hal format="aidl">
+        <name>com.fingerprints.fpc.extension</name>
+        <fqname>IFpcExtension/default</fqname>
+    </hal>
 </manifest>
