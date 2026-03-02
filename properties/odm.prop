@@ -1,0 +1,41 @@
+# Audio
+ro.vendor.audio.camera.loopback.support=false
+vendor.audio.timecheck_timeoutMs=10000
+
+# Display
+debug.sf.set_idle_timer_ms=1500
+persist.vendor.dc_backlight.enable=false
+ro.surface_flinger.enable_frame_rate_override=false
+ro.surface_flinger.set_touch_timer_ms=1500
+ro.vendor.cabc.enable=true
+ro.vendor.colorpick_adjust=true
+ro.vendor.display.all_modes_support_WCG.enable=false
+ro.vendor.display.default_fps=48
+ro.vendor.display.dolbyvision.support=false
+ro.vendor.display.heartrate_lockfps_support=true
+ro.vendor.display.idle_default_fps=48
+ro.vendor.display.idle_default_fps.support=true
+ro.vendor.display.sensortype=2
+ro.vendor.display.set_fps_stat_timer_ms=200
+ro.vendor.display.support_iqiyi_10bit=false
+ro.vendor.display.touch.idle.enable=true
+ro.vendor.display.tp_idle_fps=48
+ro.vendor.display.type=lcd
+ro.vendor.display.ultimate.perf.support=true
+ro.vendor.display.update_gray_by_temperature=true
+ro.vendor.display.video_or_camera_fps.support=true
+ro.vendor.fps.switch.default=true
+ro.vendor.fps.switch.thermal=true
+ro.vendor.hbm_backlight.enable=true
+ro.vendor.histogram.enable=false
+ro.vendor.mi_sf.hdr_enable_flatmode=false
+ro.vendor.mi_sf.highfps_duration_enable=true
+ro.vendor.mi_sf.p3_wcg=false
+ro.vendor.whitepoint_calibration_enable=false
+vendor.display.force_tonemapping=1
+
+# Qti
+ro.vendor.qti.va_odm.support=1
+
+# Radio
+persist.vendor.radio.dynamic_sar=1

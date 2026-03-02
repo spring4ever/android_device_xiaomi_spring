@@ -1,0 +1,69 @@
+# Audio
+aaudio.hw_burst_min_usec=2000
+aaudio.mmap_exclusive_policy=2
+af.fast_track_multiplier=1
+audio.deep_buffer.media=true
+audio.offload.min.duration.secs=30
+audio.offload.video=true
+audio.sys.mute.latency.factor=2
+audio.sys.noisy.broadcast.delay=500
+audio.sys.offload.pstimeout.secs=3
+audio.sys.routing.latency=0
+ro.vendor.audio.ring.filter=false
+ro.vendor.audio.ring_default_volume_forgt=14
+ro.vendor.audio.volume_super_customsetstreamtype=true
+ro.vendor.audio.volume_super_index_add=10
+ro.vendor.audio.volume_super_percent=200
+ro.vendor.audio.volume_super_streamtype=44
+ro.vendor.audio.volume_super_version=type_p_1
+vendor.audio.flac.sw.decoder.24bit=true
+vendor.audio.hw.aac.encoder=true
+vendor.audio.offload.buffer.size.kb=32
+vendor.audio.offload.multiaac.enable=true
+vendor.audio.parser.ip.buffer.size=262144
+vendor.audio.tunnel.encode=false
+vendor.audio.use.sw.alac.decoder=true
+vendor.audio.use.sw.ape.decoder=true
+vendor.audio_hal.period_size=192
+vendor.voice.path.for.pcm.voip=true
+
+# Bluetooth
+bluetooth.device_id.vendor_id=0x001D
+bluetooth.hfp.codec_aptx_voice.enabled=false
+bluetooth.hfp.swb.aptx.power_management.enabled=false
+bluetooth.profile.a2dp.source.enabled=true
+bluetooth.profile.asha.central.enabled=true
+bluetooth.profile.avrcp.controller.enabled=false
+bluetooth.profile.avrcp.target.enabled=true
+bluetooth.profile.bap.broadcast.assist.enabled=false
+bluetooth.profile.bap.broadcast.source.enabled=false
+bluetooth.profile.bap.unicast.client.enabled=false
+bluetooth.profile.bas.client.enabled=true
+bluetooth.profile.ccp.server.enabled=false
+bluetooth.profile.csip.set_coordinator.enabled=false
+bluetooth.profile.gatt.enabled=true
+bluetooth.profile.hap.client.enabled=false
+bluetooth.profile.hfp.ag.enabled=true
+bluetooth.profile.hid.device.enabled=true
+bluetooth.profile.hid.host.enabled=true
+bluetooth.profile.map.server.enabled=true
+bluetooth.profile.mcp.server.enabled=false
+bluetooth.profile.opp.enabled=true
+bluetooth.profile.pan.nap.enabled=true
+bluetooth.profile.pan.panu.enabled=true
+bluetooth.profile.pbap.server.enabled=true
+bluetooth.profile.vcp.controller.enabled=false
+persist.vendor.bt.a2dp.samplerate=true
+
+# Media
+media.stagefright.audio.deep=true
+
+# Radio
+persist.vendor.radio.enable_temp_dds=true
+
+# Radio (IMS)
+persist.vendor.ims.no_stapa=1
+
+# Miscellaneous
+remote_provisioning.enable_rkpd=true
+remote_provisioning.hostname=remoteprovisioning.googleapis.com
