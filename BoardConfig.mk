@@ -191,6 +191,17 @@ DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += \
     $(DEVICE_PATH)/configs/vintf/compatibility_matrix.device.xml \
     hardware/qcom-caf/common/vendor_framework_compatibility_matrix.xml
 
+ODM_MANIFEST_SKUS := \
+    o19cn o19cn_ss \
+    o19eea o19eea_ss \
+    o19gl o19gl_ss o19glp o19glp_ss \
+    o19in o19in_ss o19inp o19inp_ss \
+    o19jp
+
+$(foreach sku,$(ODM_MANIFEST_SKUS), \
+    $(eval ODM_MANIFEST_$(call to-upper,$(sku))_FILES := \
+        $(DEVICE_PATH)/configs/vintf/sku/manifest_$(sku).xml))
+
 # WiFi
 BOARD_WLAN_DEVICE := qcwcn
 BOARD_HOSTAPD_DRIVER := NL80211
