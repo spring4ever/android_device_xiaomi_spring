@@ -122,7 +122,10 @@ PRODUCT_PACKAGES += \
     fstab.default.vendor_ramdisk
 
 PRODUCT_PACKAGES += \
-    init.recovery.qcom.rc
+    init.qcom.rc \
+    init.recovery.qcom.rc \
+    init.target.rc \
+    ueventd.qcom.rc
 
 # IPACM
 PRODUCT_PACKAGES += \

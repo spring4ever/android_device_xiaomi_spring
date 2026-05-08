@@ -1,0 +1,430 @@
+
+# Copyright (c) 2019-2021, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
+# Changes from Qualcomm Innovation Center are provided under the following license:
+# Copyright (c) 2022 Qualcomm Innovation Center, Inc. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted (subject to the limitations in the
+# disclaimer below) provided that the following conditions are met:
+#
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#
+#     * Neither the name of Qualcomm Innovation Center, Inc. nor the names of
+#       its contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE
+# GRANTED BY THIS LICENSE. THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT
+# HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+# IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE
+# GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+# IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+import /vendor/etc/init/hw/init.qti.kernel.rc
+
+on early-init && property:ro.boot.hwc=Global
+    setprop ro.power.profile bat_6000
+
+on early-init && property:ro.boot.hwc=CN
+    setprop ro.power.profile bat_6310
+
+on early-init && property:ro.boot.hwc=India
+    setprop ro.power.profile bat_6310
+
+on early-init && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on early-init
+    write /proc/sys/kernel/printk_devkmsg ratelimited
+    export MEMTAG_OPTIONS off
+
+on init && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on init
+    wait /dev/block/platform/soc/${ro.boot.bootdevice}
+    symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
+    chown system system /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
+    chmod 0660 /sys/devices/platform/soc/1d84000.ufshc/auto_hibern8
+    start logd
+
+on late-init && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on early-fs && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on early-fs
+    start vold
+
+on fs && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on fs
+    start hwservicemanager
+    mount_all --early
+    chown root system /mnt/vendor/persist
+    chmod 0771 /mnt/vendor/persist
+    restorecon_recursive /mnt/vendor/persist
+    mkdir /mnt/vendor/persist/data 0700 system system
+    mount ext4 /dev/block/bootdevice/by-name/rescue /mnt/rescue noatime
+    restorecon_recursive /mnt/rescue
+    mkdir /dev/logfs 0771 system system
+    mount vfat /dev/block/bootdevice/by-name/logfs /dev/logfs noatime umask=006,uid=1000,gid=1000
+    # ADD: Audio_Xlog
+    chmod 0666 /dev/xlog
+
+on post-fs && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on post-fs
+    # set RLIMIT_MEMLOCK to 64MB
+    setrlimit 8 67108864 67108864
+
+on late-fs && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on late-fs
+    wait_for_prop hwservicemanager.ready true
+    #exec_start wait_for_keymaster
+    mount_all --late
+
+on post-fs-data && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on post-fs-data
+    mkdir /vendor/data/tombstones 0771 system system
+    mkdir /data/vendor/mac_addr 0777 root system
+    # Disable audio.deep
+    setprop media.stagefright.audio.deep false
+    mkdir /data/vendor/wlan_logs 0777 root shell
+    # Enable WLAN cold boot calibration
+    write /sys/kernel/cnss/fs_ready 1
+    #Make MTU adjusting
+    write /proc/sys/net/ipv4/tcp_mtu_probing 1
+    #Thermal
+    mkdir /data/vendor/thermal 0771 root system
+    mkdir /data/vendor/thermal/config 0771 root system
+    chown system system /sys/class/thermal/thermal_message/sconfig
+    chown system system /sys/class/thermal/thermal_message/boost
+    chown system system /sys/class/thermal/thermal_message/temp_state
+    chown system system /sys/class/thermal/thermal_message/thermal_max_brightness
+    chown system system /sys/class/thermal/thermal_message/balance_mode
+    chown system system /sys/class/mi_display/disp-DSI-0/thermal_hbm_disabled
+    chmod 0664 /sys/class/mi_display/disp-DSI-0/thermal_hbm_disabled
+    chown system system /sys/class/thermal/thermal_message/charger_temp
+    chown system system /sys/class/thermal/power_save/powersave_mode
+    chown system system /sys/class/thermal/power_save/power_level
+    chown system system /sys/class/power_supply/battery/constant_charge_current
+    chmod 0664 /sys/class/power_supply/battery/constant_charge_current
+    chmod 0666 /sys/class/lc_charger/source
+    chmod 0666 /sys/class/qcom-battery/reverse_quick_charge
+    chown system system /sys/class/power_debug/temp_aware
+    chmod 0660 /sys/class/qcom-battery/smart_fv
+
+    chmod 0662 /dev/miev
+    restorecon /dev/miev
+
+    #lct.caosong modify for BUGO19-4198:QCC mode configuration
+    setprop vendor.qti.qcc.oper.mode 4
+
+on early-boot && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on early-boot
+    verity_update_state
+
+on boot && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on boot
+    write /dev/cpuset/audio-app/cpus 6-7
+    # Add a cpuset for the camera daemon
+    # We want all cores for camera
+    mkdir /dev/cpuset/camera-daemon
+    write /dev/cpuset/camera-daemon/cpus 0-7
+    write /dev/cpuset/camera-daemon/mems 0
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon
+    chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
+    chmod 0660 /dev/cpuset/camera-daemon/tasks
+    chown system /sys/devices/platform/soc/990000.i2c/i2c-0/0-0038/trusted_touch_enable
+    chmod 0660 /sys/devices/platform/soc/990000.i2c/i2c-0/0-0038/trusted_touch_enable
+    chown system /sys/devices/platform/soc/990000.spi/spi_master/spi0/spi0.0/trusted_touch_enable
+    chmod 0660 /sys/devices/platform/soc/990000.spi/spi_master/spi0/spi0.0/trusted_touch_enable
+    chown system /sys/devices/system/cpu/hyp_core_ctl/enable
+    chown system /sys/devices/system/cpu/hyp_core_ctl/hcc_min_freq
+    chmod 777 /odm/etc/ffbmdeepsleep.sh
+    chown system system /sys/class/thermal/thermal_message/boost
+    chmod 0664 /sys/class/thermal/thermal_message/boost
+    chown system system /sys/class/thermal/thermal_message/balance_mode
+
+#qvga
+    chown cameraserver cameraserver /sys/class/qvga/qvga/rear_qvga
+    chmod 0666 /sys/class/qvga/qvga/rear_qvga
+    chown cameraserver cameraserver /sys/class/qvga/qvga/cam_name
+    chmod 0666 /sys/class/qvga/qvga/cam_name
+
+on zygote-start && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on nonencrypted && property:ro.boot.ota_reboot=1
+    #reclaim slab and buffer cache
+    write /proc/sys/vm/drop_cache 3
+
+on property:vendor.display.lcd_density=560
+   setprop dalvik.vm.heapgrowthlimit 256m
+
+on property:vendor.display.lcd_density=640
+   setprop dalvik.vm.heapgrowthlimit 512m
+
+on init && property:ro.boot.mode=charger
+    wait_for_prop vendor.all.modules.ready 1
+    mount_all /vendor/etc/charger_fw_fstab.qti --early
+    wait /sys/kernel/boot_adsp/boot
+    write /sys/kernel/boot_adsp/boot 1
+
+on charger
+    start vendor.power_off_alarm
+    write /sys/kernel/cnss/charger_mode 1
+    setprop persist.sys.offlinelog.poweroff_charger_log false
+    start vendor.hvdcp_opti
+
+#service vendor.lowi /vendor/bin/sscrpcd
+#   class core
+#   user system
+#   group system wakelock
+#   capabilities BLOCK_SUSPEND
+
+#pd-mapper
+service vendor.pd_mapper /vendor/bin/pd-mapper
+    class core
+    user system
+    group system
+
+#Peripheral manager
+service vendor.per_mgr /vendor/bin/pm-service
+    class core
+    user system
+    group system
+    ioprio rt 4
+
+service vendor.per_proxy /vendor/bin/pm-proxy
+    class core
+    user system
+    group system
+    disabled
+
+#service vendor.mdm_helper /vendor/bin/mdm_helper
+#    class core
+#    group system wakelock
+#    disabled
+
+service vendor.mdm_launcher /vendor/bin/sh /vendor/bin/init.mdm.sh
+    class core
+    oneshot
+
+service vendor.hvdcp_opti /system/vendor/bin/hvdcp_opti
+    class main
+    user root
+    group system wakelock
+
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
+
+on property:sys.shutdown.requested=*
+    write /sys/kernel/qcom_rproc/shutdown_in_progress 1
+    stop vendor.per_proxy
+
+on property:ro.debuggable=1 && property:sys.bootstat.first_boot_completed=0
+    setprop persist.vendor.cnss_diag.enable true
+    setprop persist.vendor.tcpdump.enable true
+
+on property:persist.vendor.cnss_diag.enable=true
+    start vendor.cnss_diag
+
+on property:persist.vendor.cnss_diag.enable=false
+    stop vendor.cnss_diag
+
+on post-fs-data
+    # Disable offlinelog
+    setprop persist.sys.offlinelog.logcat false
+    setprop persist.sys.offlinelog.logcatkernel false
+
+service vendor.cnss_diag /system/vendor/bin/cnss_diag -q -f -t HELIUM
+   class main
+   user system
+   group system wifi inet sdcard_rw media_rw diag
+   disabled
+   oneshot
+
+on early-boot && property:persist.vendor.pcie.boot_option=*
+    write /sys/bus/platform/devices/1c00000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
+    write /sys/bus/platform/devices/1c08000.qcom,pcie/debug/boot_option ${persist.vendor.pcie.boot_option}
+
+# add start for tools of wifi RF test and start by dial *#*#2008#*#*
+service openwifi_L /vendor/bin/sh /vendor/bin/wifitest.sh
+    oneshot
+    disabled
+service closewifi_L /vendor/bin/sh /vendor/bin/wifitest_close.sh
+    oneshot
+    disabled
+on property:vendor.openwifi_L=1
+    start openwifi_L
+on property:vendor.closewifi_L=1
+    start closewifi_L
+service wifiFtmdaemon /vendor/bin/ftmdaemon -dd -n
+    oneshot
+    disabled
+on  property:vendor.sys.wifiFtmdaemon=1
+    start wifiFtmdaemon
+on  property:vendor.sys.wifiFtmdaemon=0
+    stop wifiFtmdaemon
+service myftmftm /vendor/bin/sh /vendor/bin/myftm.agent.sh
+    oneshot
+    disabled
+on property:vendor.sys.myftm=1
+    start myftmftm
+# add end
+
+# add start for tools of bt RF test and start by dial *#*#2008#*#*
+service wdsdaemon /vendor/bin/wdsdaemon -su
+    user root
+    group root
+    oneshot
+    disabled
+on property:vendor.start_wdsdaemon=1
+    start wdsdaemon
+on property:vendor.start_wdsdaemon=0
+    stop wdsdaemon
+service blueduttest /vendor/bin/sh /vendor/bin/bluedut.sh
+    class late_start
+    user root
+    group root
+    disabled
+    oneshot
+service bt_close /vendor/bin/sh /vendor/bin/bt_close.sh
+    user root
+    group root
+    oneshot
+    disabled
+on property:vendor.closebt=1
+    start bt_close
+# add end
+
+#add service start for mtmac/wifimac
+on property:ro.vendor.oem.btmac=*
+    chmod 0664 /data/vendor/mac_addr/bt.mac
+
+on property:ro.vendor.oem.wifimac=*
+    chmod 0664 /data/vendor/mac_addr/wlan.mac
+#add end
+
+# add multisim config support
+on property:ro.boot.multisim_config=*
+    setprop persist.radio.multisim.config ${ro.boot.multisim_config}
+# add end
+
+#add for wifi 9434 log
+service vendor.tcpdump /vendor/bin/tcpdump_vendor -i any -W 2 -C 2 -s 134 -w /data/vendor/wlan_logs/tcpdump.pcap
+    class main
+    user root
+    group root wifi inet sdcard_rw media_rw diag
+    disabled
+    oneshot
+
+service sniffer /vendor/bin/tcpdump_vendor -i wlan0 -w /data/vendor/wlan_logs/sniffer.pcap
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:persist.vendor.tcpdump.enable=true
+    start vendor.tcpdump
+
+on property:persist.vendor.tcpdump.enable=false
+    stop vendor.tcpdump
+
+on property:persist.sys.cota.carrier=OR
+    stop vendor.tcpdump
+
+on  property:ro.product.name=spring
+    write /sys/class/qcom-battery/country_code 1
+on  property:ro.product.name=spring_p_in
+on  property:ro.product.name=spring_in
+    write /sys/class/qcom-battery/country_code 2
+on  property:ro.product.name=spring_eea
+    write /sys/class/qcom-battery/country_code 3
+on  property:ro.product.name=spring_globa
+    write /sys/class/qcom-battery/country_code 4
+
+service startpktlog /system/vendor/bin/iwpriv wlan0 pktlog 2
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service stoppktlog /system/vendor/bin/iwpriv wlan0 pktlog 0
+    class main
+    user root
+    group root
+    disabled
+    oneshot
+
+service fatal_err_check /vendor/bin/check_fatal_err.sh
+    class late_start
+    user root
+    group root
+    oneshot
