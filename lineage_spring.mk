@@ -21,8 +21,8 @@ PRODUCT_MODEL := 25057RN09G
 PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BuildDesc="spring_global-user 15 AQ3A.250226.002/OS2.0.209.0.VOUMIXM release-keys" \
-    BuildFingerprint=Redmi/spring_global/spring:15/AQ3A.250226.002/OS2.0.209.0.VOUMIXM:user/release-keys \
+    BuildDesc="spring_global-user 15 AQ3A.250226.002/OS2.0.210.0.VOUMIXM release-keys" \
+    BuildFingerprint=Redmi/spring_global/spring:15/AQ3A.250226.002/OS2.0.210.0.VOUMIXM:user/release-keys \
     DeviceName=spring_global \
     DeviceProduct=spring
 
