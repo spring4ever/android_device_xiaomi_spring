@@ -96,6 +96,8 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace('.*media_codecs_(google_audio|google_telephony|vendor_audio|google_c2|dolby_audio).*\n', ''),
     'vendor/lib64/libcameraopt.so': blob_fixup()
         .add_needed('libprocessgroup_shim.so'),
+    'vendor/etc/vintf/manifest/c2_manifest_vendor_spring.xml': blob_fixup()
+        .regex_replace('.+DOLBY.+\n', ''),
 }  # fmt: skip
 
 
