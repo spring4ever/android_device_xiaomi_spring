@@ -1,10 +1,6 @@
 # Unpinned blobs from spring-user 15 AQ3A.250226.002 OS2.0.210.0.VOUMIXM release-keys
 
 # ACDB
-vendor/etc/acdbdata/blair_mtp/MTP_acdb_cal.acdb
-vendor/etc/acdbdata/blair_mtp/MTP_workspaceFileXml.qwsp
-vendor/etc/acdbdata/blair_mtp_usbc/MTP_usbc_acdb_cal.acdb
-vendor/etc/acdbdata/blair_mtp_usbc/MTP_usbc_workspaceFileXml.qwsp
 vendor/etc/acdbdata/blair_qrd/QRD_acdb_cal.acdb
 vendor/etc/acdbdata/blair_qrd/QRD_workspaceFileXml.qwsp
 vendor/etc/acdbdata/nn_ns_models/fai__2.0.0_0.1__3.0.0_0.0__eai_1.00.pmd
@@ -62,11 +58,7 @@ vendor/lib64/vendor.qti.hardware.AGMIPC@1.0-impl.so
 vendor/lib64/vendor.qti.hardware.pal@1.0-impl.so
 
 # Audio configs
-vendor/etc/audio/sku_blair/mixer_paths_blair_mtp.xml
-vendor/etc/audio/sku_blair/mixer_paths_blair_mtp_usbc.xml
 vendor/etc/audio/sku_blair/mixer_paths_blair_qrd.xml
-vendor/etc/audio/sku_blair/resourcemanager_blair_mtp.xml
-vendor/etc/audio/sku_blair/resourcemanager_blair_mtp_usbc.xml
 vendor/etc/audio/sku_blair/resourcemanager_blair_qrd.xml
 vendor/etc/backend_conf.xml
 vendor/etc/card-defs.xml
