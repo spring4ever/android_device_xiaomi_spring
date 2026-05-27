@@ -88,9 +88,6 @@ BOARD_BOOTCONFIG := \
     androidboot.usbcontroller=4e00000.dwc3 \
     androidboot.load_modules_parallel=true
 
-BOARD_BOOTCONFIG += \
-    androidboot.selinux=permissive
-
 # Kernel (prebuilt)
 PREBUILT_PATH := device/xiaomi/spring-kernel
 TARGET_NO_KERNEL_OVERRIDE := true
@@ -174,6 +171,7 @@ ENABLE_VENDOR_RIL_SERVICE := true
 
 # Sepolicy
 include device/qcom/sepolicy_vndr/SEPolicy.mk
+BOARD_VENDOR_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
 
 # Vendor security patch
 VENDOR_SECURITY_PATCH := 2026-02-01

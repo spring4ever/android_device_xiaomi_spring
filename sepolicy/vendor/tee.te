@@ -1,0 +1,1 @@
+allow tee mnt_vendor_file:dir r_dir_perms;

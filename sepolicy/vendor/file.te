@@ -1,0 +1,29 @@
+# Audio
+type audio_socket, file_type;
+
+# Camera
+type camera_persist_file, file_type, vendor_persist_type;
+
+# Diag
+type vendor_modem_data_file, data_file_type, file_type;
+
+# Display
+type vendor_sysfs_displayfeature, fs_type, sysfs_type;
+
+# GNSS
+type vendor_ins_vendor_data_file, data_file_type, file_type;
+
+# Mac Address
+type vendor_mac_vendor_data_file, data_file_type, file_type, mlstrustedobject;
+
+# Proximity
+type sysfs_tp_virtual_prox, fs_type, sysfs_type;
+
+# Sensors
+type sysfs_therm, fs_type, sysfs_type;
+
+# Thermal
+type sys_thermal_wifi_limit, fs_type, sysfs_type;
+type sys_thermal_flash_state, fs_type, sysfs_type;
+type sys_thermal_torch_real_level, fs_type, sysfs_type;
+type thermal_data_file, data_file_type, file_type;
