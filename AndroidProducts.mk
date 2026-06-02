@@ -4,4 +4,4 @@
 #
 
 PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/custom_spring.mk
+    $(LOCAL_DIR)/lineage_spring.mk
