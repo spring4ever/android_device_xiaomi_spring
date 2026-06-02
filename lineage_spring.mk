@@ -26,14 +26,15 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceName=spring_global \
     DeviceProduct=spring
 
+PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+# Axion Device Configuration
+AXION_MAINTAINER := 🔻MachoMan🔻
+AXION_PROCESSOR := Snapdragon®_6s_Gen_3 
 
 
-# MistOS 
-WITH_GMS := true
-MISTOS_MAINTAINER := 🔻MachoMan🔻
-TARGET_DEFAULT_PIXEL_LAUNCHER := true
+
+# Graphics & Display
 TARGET_ENABLE_BLUR := true
-TARGET_USES_PICO_GAPPS :=true
-TARGET_HAS_UDFPS := true
-TARGET_SUPPORTS_QUICK_TAP := true
-BYPASS_CHARGE_SUPPORTED := true
+TARGET_SUPPORTED_REFRESH_RATES := 120,144
+
