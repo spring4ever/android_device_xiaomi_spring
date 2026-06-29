@@ -1,5 +1,4 @@
 vendor_restricted_prop(vendor_fp_info_prop)
-vendor_public_prop(vendor_displayfeature_prop)
 vendor_public_prop(vendor_panel_info_prop)
 vendor_public_prop(vendor_camera_sensor_prop)
 vendor_public_prop(vendor_camera_p3enable_prop)
