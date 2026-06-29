@@ -593,12 +593,6 @@ vendor/bin/init.qti.chg_policy.sh
 vendor/etc/init/vendor.qti.hardware.charger_monitor@1.0-service.rc
 vendor/etc/charger_fstab.qti
 
-# CIT Sensor
-odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl
-odm/etc/init/vendor.xiaomi.sensor.citsensorservice.aidl.rc
-odm/etc/vintf/manifest/vendor.xiaomi.sensor.citsensorservice.aidl.xml
-vendor/lib64/vendor.xiaomi.sensor.citsensorservice-V1-ndk.so
-
 # CNE
 vendor/app/CneApp/CneApp.apk;REQUIRED=CneApp.libvndfwk_detect_jni.qti_vendor_symlink
 vendor/bin/cnd

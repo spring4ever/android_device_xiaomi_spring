@@ -53,7 +53,6 @@ blob_fixups: blob_fixups_user_type = {
         .add_needed('libinput_shim.so')
         .remove_needed('android.hidl.base@1.0.so'),
     (
-        'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
         'vendor/bin/hw/vendor.qti.camera.provider-service_64',
         'vendor/lib64/camx.provider-impl.so',
         'vendor/lib64/libdpps.so',
