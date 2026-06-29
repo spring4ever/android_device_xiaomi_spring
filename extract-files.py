@@ -54,7 +54,6 @@ blob_fixups: blob_fixups_user_type = {
         .remove_needed('android.hidl.base@1.0.so'),
     (
         'odm/bin/hw/vendor.xiaomi.sensor.citsensorservice.aidl',
-        'odm/lib64/hw/displayfeature.default.so',
         'vendor/bin/hw/vendor.qti.camera.provider-service_64',
         'vendor/lib64/camx.provider-impl.so',
         'vendor/lib64/libdpps.so',
