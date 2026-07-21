@@ -1,3 +1,6 @@
+# Dt2w
+genfscon proc /tp_gesture u:object_r:proc_touchpad:s0
+
 # Proximity
 genfscon proc /tp_proximity_switch u:object_r:proc_tp_virtual_proximity:s0
 genfscon proc /tp_proximity_data u:object_r:proc_tp_virtual_proximity:s0

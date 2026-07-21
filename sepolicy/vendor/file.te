@@ -10,6 +10,9 @@ type vendor_modem_data_file, data_file_type, file_type;
 # Display
 type vendor_sysfs_displayfeature, fs_type, sysfs_type;
 
+# Dt2w
+type proc_touchpad, fs_type, proc_type;
+
 # Fingerprint
 type vendor_sysfs_fps_attr, fs_type, sysfs_type;
 
