@@ -186,6 +186,10 @@ on boot
     chown system system /dev/goodix_fp
     chmod 0777 /dev/goodix_fp
 
+# DT2W
+    chown system system /proc/tp_gesture
+    chmod 0664 /proc/tp_gesture
+
 on post-fs-data
     mkdir /data/vendor/goodix 0777 system system
     mkdir /data/vendor/fpc 0777 system system
