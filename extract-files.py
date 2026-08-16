@@ -59,7 +59,6 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/bin/hw/vendor.qti.hardware.display.composer-service',
         'vendor/lib64/camx.provider-impl.so',
         'vendor/lib64/libdpps.so',
-        'vendor/lib64/liblearningmodule.so',
         'vendor/lib64/libsnapdragoncolor-manager.so',
     ): blob_fixup()
         .replace_needed('libtinyxml2.so', 'libtinyxml2-v34.so'),
@@ -69,7 +68,6 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/bin/xtra-daemon',
         'vendor/lib64/libcne.so',
         'vendor/lib64/libqcc_sdk.so',
-        'vendor/lib64/libqms_client.so',
     ): blob_fixup()
         .add_needed('libbinder_shim.so'),
     'vendor/lib64/libqcodec2_core.so': blob_fixup()
