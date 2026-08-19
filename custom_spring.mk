@@ -7,15 +7,16 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit_only.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+# Inherit some common PixelOS stuff.
+$(call inherit-product, vendor/custom/config/common_full_phone.mk)
+TARGET_SCREEN_WIDTH := 1080
 
 # Inherit from spring device
 $(call inherit-product, device/xiaomi/spring/device.mk)
 
 # Device identifiers
 PRODUCT_DEVICE := spring
-PRODUCT_NAME := lineage_spring
+PRODUCT_NAME := custom_spring
 PRODUCT_BRAND := Redmi
 PRODUCT_MODEL := 25057RN09G
 PRODUCT_MANUFACTURER := Xiaomi
