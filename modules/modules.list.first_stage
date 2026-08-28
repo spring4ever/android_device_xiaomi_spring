@@ -1,0 +1,6 @@
+sched-walt-debug.ko
+gh_mem_notifier.ko
+gic_intr_routing.ko
+mem_buf_msgq.ko
+crypto-qti-common.ko
+crypto-qti-hwkm.ko
