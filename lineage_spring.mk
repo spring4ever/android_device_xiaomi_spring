@@ -28,3 +28,15 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # GMS
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
+
+RISING_MAINTAINER := Suchit
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    RisingMaintainer="Suchit" \
+    RisingChipset="Snapdragon 6s Gen 3"
+
+TARGET_ENABLE_BLUR := true
+
+# CORE build flags
+WITH_GMS := true
+TARGET_USES_PICO_GAPPS := true
