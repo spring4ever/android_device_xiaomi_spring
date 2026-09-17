@@ -425,13 +425,6 @@
                 <route type="mix" sink="USB Host Out"
                        sources="usb_accessory output"/>
             </routes>
-                <!-- Custom Bluetooth Routes Declaration for Dolby Processing -->
-                <route type="mix" sink="BT A2DP Out"
-                       sources="primary output,deep_buffer,voip_rx,spatial output"/>
-                <route type="mix" sink="BT A2DP Headphones"
-                       sources="primary output,deep_buffer,voip_rx,spatial output"/>
-                <route type="mix" sink="BT A2DP Speaker"
-                       sources="primary output,deep_buffer,voip_rx,spatial output"/>
         </module>
 
         <!-- Remote Submix Audio HAL -->
