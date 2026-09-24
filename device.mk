@@ -142,6 +142,10 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.drm-service.clearkey
 
+# Evolution
+PRODUCT_PACKAGE_OVERLAYS += \
+    $(LOCAL_PATH)/evolution
+
 # Fingerprint
 $(call soong_config_set,XIAOMI_BIOMETRICS_FINGERPRINT,IMPL_VER,V2)
 PRODUCT_PACKAGES += \
