@@ -1918,6 +1918,10 @@ odm/firmware/novatek_ts_fw_csot_erp.bin
 odm/firmware/novatek_ts_mp_csot.bin
 odm/firmware/novatek_ts_mp_csot_erp.bin
 
+# Touchscreen (recovery)
+odm/firmware/focaltech_ts_fw_tm.bin:recovery/root/lib/firmware/focaltech_ts_fw_tm.bin
+odm/firmware/novatek_ts_fw_csot.bin:recovery/root/lib/firmware/novatek_ts_fw_csot.bin
+
 # Trusted Execution Environment connector
 vendor/bin/hw/vendor.qti.hardware.qteeconnector@1.0-service
 vendor/etc/init/vendor.qti.hardware.qteeconnector@1.0-service.rc
