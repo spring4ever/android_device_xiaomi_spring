@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: Apache-2.0 -->
+<resources>
+    <!-- Spring virtual proximity activation interferes with touchscreen suspend/DT2W.
+         Select the posture-aware path, whose unavailable sensor entries retain
+         noProxSensor. An empty proximity_sensor_type alone invokes default fallback.
+         These deliberately unavailable types disable SystemUI proximity checks;
+         they do not remove the proximity sensor from the HAL or telephony.
+         Entries cover UNKNOWN, CLOSED, HALF_OPENED, OPENED and FLIPPED. -->
+    <string-array name="proximity_sensor_posture_mapping" translatable="false">
+        <item>com.xiaomi.spring.systemui.proximity.disabled</item>
+        <item>com.xiaomi.spring.systemui.proximity.disabled</item>
+        <item>com.xiaomi.spring.systemui.proximity.disabled</item>
+        <item>com.xiaomi.spring.systemui.proximity.disabled</item>
+        <item>com.xiaomi.spring.systemui.proximity.disabled</item>
+    </string-array>
+    <string-array name="proximity_sensor_secondary_posture_mapping" translatable="false">
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+    </string-array>
+</resources>
