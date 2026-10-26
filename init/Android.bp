@@ -3,6 +3,15 @@
 // SPDX-License-Identifier: Apache-2.0
 //
 
+cc_library_static {
+    name: "libinit_spring_charger",
+    recovery_available: true,
+    srcs: ["init_spring_charger.cpp"],
+    include_dirs: ["system/core/init"],
+    shared_libs: ["libbase"],
+    cflags: ["-Wall", "-Wextra", "-Werror"],
+}
+
 prebuilt_etc {
     name: "fstab.default",
     src: "etc/fstab.default",

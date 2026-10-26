@@ -161,7 +161,8 @@ PRODUCT_COPY_FILES += \
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.qti \
-    android.hardware.health-service.qti_recovery
+    android.hardware.health-service.qti_recovery \
+    charger_res_images_vendor
 
 # HIDL
 PRODUCT_PACKAGES += \
@@ -169,6 +170,8 @@ PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0-service
 
 # Init
+$(call soong_config_set,libinit,vendor_init_lib,//$(LOCAL_PATH):libinit_spring_charger)
+
 PRODUCT_PACKAGES += \
     fstab.default \
     fstab.default.vendor_ramdisk
